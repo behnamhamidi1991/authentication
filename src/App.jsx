@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import { useEffect } from "react";
+
+const options = {
+  method: "GET",
+  url: "https://investing-cryptocurrency-markets.p.rapidapi.com/coins/get-news",
+  params: {
+    pair_ID: "1057391",
+    page: "1",
+    time_utc_offset: "28800",
+    lang_ID: "1",
+  },
+  headers: {
+    "X-RapidAPI-Key": "fa982306ecmsh438ba6bf7ad4885p191618jsn582b5ea5c40b",
+    "X-RapidAPI-Host": "investing-cryptocurrency-markets.p.rapidapi.com",
+  },
+};
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  useEffect(() => {
+    //
+    //
+  }, []);
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      <div className="container">
+        <h1>Title</h1>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,
+          dolores.
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
