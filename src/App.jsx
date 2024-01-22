@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const options = {
   method: "GET",
@@ -18,8 +18,16 @@ const options = {
 
 function App() {
   useEffect(() => {
-    //
-    //
+    async function myApi() {
+      try {
+        const response = await axios.request(options);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    myApi();
   }, []);
   return (
     <>
