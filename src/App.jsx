@@ -5,6 +5,10 @@ function App() {
   const [container, setContainer] = useState([]);
   const [finalPoint, setFinalPoint] = useState("");
 
+  useEffect(() => {
+    fetchData();
+  }, [finalPoint]);
+
   const fetchData = () => {
     fetch(
       `https://online-movie-database.p.rapidapi.com/auto-complete?q=+${endPoint}`,
@@ -28,10 +32,6 @@ function App() {
       });
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [endPoint]);
-
   const onChangeHandler = (e) => {
     setEndPoint(e.target.value);
   };
@@ -52,13 +52,18 @@ function App() {
         <div className="movieContainer">
           {container.map((item) => {
             return (
-              <div key={item.id} className="movieBox">
+              <div key={item.index} className="movieBox">
                 <img
                   src={item.i.imageUrl}
                   alt="movie-image"
                   className="movieImage"
                 />
-                <p>{item.l}</p>
+                <div className="details">
+                  <h3>{item.l}</h3>
+
+                  <p>Rank: {item.rank}</p>
+                  <p>Year: {item.y}</p>
+                </div>
               </div>
             );
           })}

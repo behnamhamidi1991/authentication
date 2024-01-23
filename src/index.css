@@ -48,5 +48,20 @@ body {
 }
 
 .movieBox {
-  background-color: rgb(11, 11, 11);
+  background-color: rgb(57, 54, 70);
+}
+
+.details {
+  padding: 18px 30px;
+  line-height: 1.9;
+}
+
+.details h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: rgb(206, 220, 255);
+}
+
+.details p {
+  color: rgb(166, 169, 186);
 }
