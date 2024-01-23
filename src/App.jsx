@@ -52,7 +52,7 @@ function App() {
         <div className="movieContainer">
           {container.map((item) => {
             return (
-              <div key={item.index} className="movieBox">
+              <div key={item.id} className="movieBox">
                 <img
                   src={item.i.imageUrl}
                   alt="movie-image"
@@ -63,6 +63,8 @@ function App() {
 
                   <p>Rank: {item.rank}</p>
                   <p>Year: {item.y}</p>
+                  <p>{item.q}</p>
+                  <p>{item.s}</p>
                 </div>
               </div>
             );
