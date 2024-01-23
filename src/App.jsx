@@ -1,34 +1,37 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 function App() {
-  async function getData() {
-    const url =
-      "https://online-movie-database.p.rapidapi.com/auto-complete?q=game%20of%20thr";
-    const options = {
+  const [endPoint, setEndPoint] = useState("");
+
+  fetch(
+    "https://online-movie-database.p.rapidapi.com/auto-complete?q=game%20of%20thr",
+    {
       method: "GET",
       headers: {
         "X-RapidAPI-Key": "fa982306ecmsh438ba6bf7ad4885p191618jsn582b5ea5c40b",
         "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com",
       },
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const result = await response.text();
-      console.log(result);
-    } catch (error) {
-      console.error(error);
     }
-  }
+  )
+    .then((response) => {
+      console.log(response.json());
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-  useEffect(() => {
-    getData();
-  }, []);
+  const onChangeHandler = (e) => {
+    setEndPoint(e.target.value);
+  };
 
   return (
     <>
-      <div className="container"></div>
+      <div className="container">
+        <form className="formContainer">
+          <input type="text" value={endPoint} onChange={onChangeHandler} />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </>
   );
 }

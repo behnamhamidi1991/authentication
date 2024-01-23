@@ -10,3 +10,28 @@ body {
   color: #fefefe;
   padding: 100px 10%;
 }
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.formContainer input {
+  padding: 15px 10px;
+  width: 80%;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+
+.formContainer button {
+  border: none;
+  background-color: rgb(79, 52, 152);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 20px 40px;
+  border-bottom: #fff solid 1px;
+}
