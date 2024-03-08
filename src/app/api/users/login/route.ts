@@ -3,6 +3,7 @@ import User from '@/models/userModel';
 import { NextRequest, NextResponse } from 'next/server';
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { toast } from 'react-toastify';
 
 connect();
 
@@ -25,7 +26,7 @@ export async function POST(request: NextRequest) {
     // Check if password is correct
     const validPassword = await bcryptjs.compare(password, user.password);
     if (!validPassword) {
-      return NextResponse.json({ error: 'Invalid Passwird!' }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid Password!' }, { status: 400 });
     }
 
     // Create token data
@@ -48,6 +49,8 @@ export async function POST(request: NextRequest) {
 
     return response;
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(toast.error('Something went wrong!'), {
+      status: 500,
+    });
   }
 }

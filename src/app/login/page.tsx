@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 
 const SigninPage = () => {
   const router = useRouter();
@@ -38,6 +38,7 @@ const SigninPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <ToastContainer />
       <h1>{loading ? 'Loading ...' : 'Login'}</h1>
       <hr />
 
