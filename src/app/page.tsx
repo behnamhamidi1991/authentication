@@ -53,7 +53,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Test: this is a commit{" "}
+            Test: test test is a commit{" "}
           </p>
         </a>
 
