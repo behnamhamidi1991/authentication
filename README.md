@@ -1,2 +1,3 @@
-Authentication is done
-test
+Second time study it
+Make notes
+Then Create your own app
