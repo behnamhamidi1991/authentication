@@ -2,7 +2,8 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Axios } from 'axios';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const SingupPage = () => {
   const router = useRouter();
@@ -14,8 +15,21 @@ const SingupPage = () => {
 
   const [buttonDisabled, setButtonDisabled] = React.useState(true);
 
+  const [loading, setLoading] = React.useState(false);
+
   const onSignup = async () => {
-    // Code ...
+    try {
+      setLoading(true);
+      const response = await axios.post('/api/users/signup', user);
+
+      console.log('Signup success', response.data);
+      router.push('/login');
+    } catch (error: any) {
+      toast.error(error.message);
+      console.log('Signup failed', error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -32,7 +46,7 @@ const SingupPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1>Signup</h1>
+      <h1>{loading ? 'Loading...' : 'Signup'}</h1>
       <hr />
 
       <input
