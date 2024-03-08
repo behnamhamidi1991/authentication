@@ -1,18 +1,41 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { Axios } from 'axios';
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const SigninPage = () => {
+  const router = useRouter();
+  const [loading, setLoading] = React.useState(false);
   const [user, setUser] = React.useState({
     email: '',
     password: '',
   });
 
+  const [buttonDisabled, setButtonDisabled] = React.useState(false);
+
   const onLogin = async () => {
-    // Code ...
+    try {
+      setLoading(true);
+      const response = await axios.post('/api/users/login', user);
+      console.log('Login success', response.data);
+      toast.success('Login Successful!');
+      router.push('/profile');
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.message);
+    }
   };
+
+  useEffect(() => {
+    if (user.email.length > 0 && user.password.length > 0) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [user]);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <h1>Login</h1>
