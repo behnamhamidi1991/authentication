@@ -37,7 +37,7 @@ const ProfilePage = () => {
         {data === 'nothing' ? (
           'Nothing'
         ) : (
-          <Link href={`/profile/${data}`}></Link>
+          <Link href={`/profile/${data}`}>{data}</Link>
         )}
       </h2>
 
