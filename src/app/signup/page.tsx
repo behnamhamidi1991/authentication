@@ -32,6 +32,8 @@ const SingupPage = () => {
     }
   };
 
+  // console.log(process.env.DOMAIN);
+
   useEffect(() => {
     if (
       user.email.length > 0 &&
